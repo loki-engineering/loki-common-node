@@ -176,8 +176,10 @@ export enum DeliveryStatus {
 }
 
 export enum OrderPenaltyType {
-  LIGHT_SCRATCH = 'light_scratch',
-  DEEP_SCRATCH = 'deep_scratch',
-  DAMAGED_CASING = 'damaged_casing',
-  SEVERE_DAMAGE = 'severe_damage',
+  LIGHT_SCRATCH = 'LIGHT_SCRATCH', // Radial scratches, minor scuffs
+  DEEP_SCRATCH = 'DEEP_SCRATCH', // Circular scratches, deep gouges
+  CASING_DAMAGE = 'CASING_DAMAGE', // Cracked plastic, broken teeth
+  MISSING_COMPONENT = 'MISSING_COMPONENT', // Manuals, inlays, or maps
+  LIQUID_DAMAGE = 'LIQUID_DAMAGE', // Soda, grease, vape residue
+  SEVERE_STRUCTURAL = 'SEVERE_STRUCTURAL', // Spindle cracks, warped, label scratches
 }
