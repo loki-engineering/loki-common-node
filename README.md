@@ -141,15 +141,20 @@ dist/                 # Compiled output (generated)
 
 ### Publish a Release
 
-The version is automatically read from `package.json`, so:
+**Requirements:**
+- Tag must be created on `main` branch (or after merging to main)
+- The version must match in both `package.json` and git tag
+
+**Steps:**
 
 1. Update the version in `package.json` (e.g., `0.1.0`)
-2. Commit and push to main
-3. Create a git tag matching the version: `git tag v0.1.0`
+2. Commit and push to main: `git push origin main`
+3. Create a git tag from main: `git tag v0.1.0`
 4. Push the tag: `git push origin v0.1.0`
 5. GitHub Actions automatically builds and publishes to npm
 
 The workflow will:
+- ✓ Verify the tag exists on the main branch
 - ✓ Verify that `package.json` version matches the git tag
 - ✓ Build TypeScript
 - ✓ Run type checking and formatting checks
