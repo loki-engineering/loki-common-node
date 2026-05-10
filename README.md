@@ -75,6 +75,20 @@ Check for TypeScript errors without building:
 npm run type-check
 ```
 
+### Code Formatting
+
+Format code with Prettier:
+
+```bash
+npm run format
+```
+
+Check if code is properly formatted (without modifying):
+
+```bash
+npm run format:check
+```
+
 ### Cleaning
 
 Remove build artifacts:

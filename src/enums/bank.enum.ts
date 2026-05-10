@@ -1,5 +1,5 @@
 export enum PayoutKnownBank {
-  BCA = "bca",
-  BNI = "bni",
-  MANDIRI = "mandiri",
+  BCA = 'bca',
+  BNI = 'bni',
+  MANDIRI = 'mandiri',
 }

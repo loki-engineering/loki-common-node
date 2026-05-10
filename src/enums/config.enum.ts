@@ -1,13 +1,13 @@
 export enum AssetVisibility {
-  PRIVATE = "private",
-  PUBLIC = "public",
+  PRIVATE = 'private',
+  PUBLIC = 'public',
 }
 
 export enum AssetType {
-  GAME = "game",
-  GAME_EDITION = "game_edition",
-  QC_OUTBOUND = "qc_outbound",
-  QC_INBOUND = "qc_inbound",
+  GAME = 'game',
+  GAME_EDITION = 'game_edition',
+  QC_OUTBOUND = 'qc_outbound',
+  QC_INBOUND = 'qc_inbound',
 }
 
 export const VisibilityToTypeMap = {
