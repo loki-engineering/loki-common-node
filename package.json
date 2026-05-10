@@ -1,0 +1,49 @@
+{
+  "name": "@lokiengineering/loki-common-node",
+  "version": "0.0.1",
+  "description": "Shared TypeScript enums and types for Loki services",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loki-engineering/loki-common-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/loki-engineering/loki-common-node/issues"
+  },
+  "homepage": "https://github.com/loki-engineering/loki-common-node#readme",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "enums",
+    "types",
+    "typescript",
+    "loki"
+  ],
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
