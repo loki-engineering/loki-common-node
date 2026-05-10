@@ -1,8 +1,10 @@
 name: Publish to npm
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*.*.*'
+      - 'v*.*.*-*'
 
 jobs:
   publish:
@@ -12,6 +14,30 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify tag is on main branch
+        run: |
+          # Check if the current commit is on the main branch
+          if ! git merge-base --is-ancestor HEAD origin/main; then
+            echo "❌ Tag is not on main branch!"
+            echo "This tag must be created from the main branch to publish."
+            exit 1
+          fi
+          echo "✓ Tag is on main branch"
+
+      - name: Verify version matches tag
+        run: |
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          TAG_VERSION=${GITHUB_REF#refs/tags/v}
+          echo "Package version: $PKG_VERSION"
+          echo "Tag version: $TAG_VERSION"
+          if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
+            echo "Version mismatch! package.json ($PKG_VERSION) != git tag (v$TAG_VERSION)"
+            exit 1
+          fi
+          echo "Versions match ✓"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -22,13 +48,28 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check formatting
+        run: npm run format:check
+
       - name: Type check
         run: npm run type-check
 
       - name: Build
         run: npm run build
 
+      - name: Determine npm tag
+        id: npm-tag
+        run: |
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          if [[ $PKG_VERSION == *"-"* ]]; then
+            echo "tag=next" >> $GITHUB_OUTPUT
+            echo "Publishing as prerelease with tag: next"
+          else
+            echo "tag=latest" >> $GITHUB_OUTPUT
+            echo "Publishing as stable with tag: latest"
+          fi
+
       - name: Publish to npm
-        run: npm publish
+        run: npm publish --tag ${{ steps.npm-tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

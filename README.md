@@ -75,6 +75,20 @@ Check for TypeScript errors without building:
 npm run type-check
 ```
 
+### Code Formatting
+
+Format code with Prettier:
+
+```bash
+npm run format
+```
+
+Check if code is properly formatted (without modifying):
+
+```bash
+npm run format:check
+```
+
 ### Cleaning
 
 Remove build artifacts:
@@ -122,19 +136,48 @@ dist/                 # Compiled output (generated)
 
 ### Setup NPM Token
 
-1. Generate an npm token with publish access
+1. Generate an npm token with publish access (at https://npmjs.com/settings/~/tokens)
 2. Add it to GitHub repository secrets as `NPM_TOKEN`
 
 ### Publish a Release
 
-1. Create a release on GitHub with a semantic version tag (e.g., `v0.1.0`)
-2. GitHub Actions will automatically build and publish to npm
+**Requirements:**
+- Tag must be created on `main` branch (or after merging to main)
+- The version must match in both `package.json` and git tag
 
-Releases trigger on:
-- `release.published` event
-- Automatically publishes to npm registry
+**Steps:**
 
-Monitor the GitHub Actions workflow to ensure successful publication.
+1. Update the version in `package.json` (e.g., `0.1.0`)
+2. Commit and push to main: `git push origin main`
+3. Create a git tag from main: `git tag v0.1.0`
+4. Push the tag: `git push origin v0.1.0`
+5. GitHub Actions automatically builds and publishes to npm
+
+The workflow will:
+- ✓ Verify the tag exists on the main branch
+- ✓ Verify that `package.json` version matches the git tag
+- ✓ Build TypeScript
+- ✓ Run type checking and formatting checks
+- ✓ Publish to npm registry with appropriate tag
+
+### Version & Tag Format
+
+The tag must match the version in `package.json` exactly (without the `v` prefix):
+
+**Stable releases:**
+- Version: `1.0.0`
+- Tag: `v1.0.0`
+- Published to npm as `@lokiengineering/loki-common-node@1.0.0` (tagged as `latest`)
+
+**Prerelease versions:**
+- Version: `1.0.0-rc` or `1.0.0-beta.1`
+- Tag: `v1.0.0-rc` or `v1.0.0-beta.1`
+- Published to npm as `@lokiengineering/loki-common-node@1.0.0-rc` (tagged as `next`)
+
+Prerelease versions are published with the `next` tag on npm, so users must explicitly install them:
+```bash
+npm install @lokiengineering/loki-common-node@next
+```
 
 ## Versioning
 
