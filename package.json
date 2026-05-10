@@ -1,6 +1,6 @@
 {
   "name": "@lokiengineering/loki-common-node",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Shared TypeScript enums and types for Loki services",
   "license": "MIT",
   "repository": {
