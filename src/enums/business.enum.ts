@@ -174,3 +174,10 @@ export enum DeliveryStatus {
   DISPATCHED = 'dispatched',
   DELIVERED = 'delivered',
 }
+
+export enum OrderPenaltyType {
+  LIGHT_SCRATCH = 'light_scratch',
+  DEEP_SCRATCH = 'deep_scratch',
+  DAMAGED_CASING = 'damaged_casing',
+  SEVERE_DAMAGE = 'severe_damage',
+}
