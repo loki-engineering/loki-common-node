@@ -122,19 +122,26 @@ dist/                 # Compiled output (generated)
 
 ### Setup NPM Token
 
-1. Generate an npm token with publish access
+1. Generate an npm token with publish access (at https://npmjs.com/settings/~/tokens)
 2. Add it to GitHub repository secrets as `NPM_TOKEN`
 
 ### Publish a Release
 
-1. Create a release on GitHub with a semantic version tag (e.g., `v0.1.0`)
-2. GitHub Actions will automatically build and publish to npm
+The version is automatically read from `package.json`, so:
 
-Releases trigger on:
-- `release.published` event
-- Automatically publishes to npm registry
+1. Update the version in `package.json` (e.g., `0.1.0`)
+2. Commit and push to main
+3. Create a git tag matching the version: `git tag v0.1.0`
+4. Push the tag: `git push origin v0.1.0`
+5. GitHub Actions automatically builds and publishes to npm
 
-Monitor the GitHub Actions workflow to ensure successful publication.
+The workflow will:
+- ✓ Verify that `package.json` version matches the git tag
+- ✓ Build TypeScript
+- ✓ Run type checking
+- ✓ Publish to npm registry
+
+Monitor the GitHub Actions workflow to ensure successful publication. The tag must match the version in `package.json` exactly (without the `v` prefix).
 
 ## Versioning
 
