@@ -119,7 +119,6 @@ export enum OrderStatus {
   DAMAGE_DETECTED = "damage_detected",
   LOST_OUTBOUND = "lost_outbound",
   LOST_INBOUND = "lost_inbound",
-  DISPUTED = "disputed",
   COMPLETED = "completed",
 }
 
