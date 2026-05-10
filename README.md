@@ -152,10 +152,27 @@ The version is automatically read from `package.json`, so:
 The workflow will:
 - ✓ Verify that `package.json` version matches the git tag
 - ✓ Build TypeScript
-- ✓ Run type checking
-- ✓ Publish to npm registry
+- ✓ Run type checking and formatting checks
+- ✓ Publish to npm registry with appropriate tag
 
-Monitor the GitHub Actions workflow to ensure successful publication. The tag must match the version in `package.json` exactly (without the `v` prefix).
+### Version & Tag Format
+
+The tag must match the version in `package.json` exactly (without the `v` prefix):
+
+**Stable releases:**
+- Version: `1.0.0`
+- Tag: `v1.0.0`
+- Published to npm as `@lokiengineering/loki-common-node@1.0.0` (tagged as `latest`)
+
+**Prerelease versions:**
+- Version: `1.0.0-rc` or `1.0.0-beta.1`
+- Tag: `v1.0.0-rc` or `v1.0.0-beta.1`
+- Published to npm as `@lokiengineering/loki-common-node@1.0.0-rc` (tagged as `next`)
+
+Prerelease versions are published with the `next` tag on npm, so users must explicitly install them:
+```bash
+npm install @lokiengineering/loki-common-node@next
+```
 
 ## Versioning
 

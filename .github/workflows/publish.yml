@@ -45,7 +45,19 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Determine npm tag
+        id: npm-tag
+        run: |
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          if [[ $PKG_VERSION == *"-"* ]]; then
+            echo "tag=next" >> $GITHUB_OUTPUT
+            echo "Publishing as prerelease with tag: next"
+          else
+            echo "tag=latest" >> $GITHUB_OUTPUT
+            echo "Publishing as stable with tag: latest"
+          fi
+
       - name: Publish to npm
-        run: npm publish
+        run: npm publish --tag ${{ steps.npm-tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
