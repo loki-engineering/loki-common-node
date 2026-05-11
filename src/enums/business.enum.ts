@@ -181,3 +181,9 @@ export enum OrderPenaltyType {
   DAMAGED_CASING = 'damaged_casing',
   SEVERE_DAMAGE = 'severe_damage',
 }
+
+export enum OrderChargeStatus {
+  NOT_ASSESSED,
+  PENDING,
+  SETTLED,
+}
