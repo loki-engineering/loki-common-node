@@ -183,3 +183,9 @@ export enum OrderPenaltyType {
   LIQUID_DAMAGE = 'LIQUID_DAMAGE', // Soda, grease, vape residue
   SEVERE_STRUCTURAL = 'SEVERE_STRUCTURAL', // Spindle cracks, warped, label scratches
 }
+
+export enum OrderChargeStatus {
+  NOT_ASSESSED,
+  PENDING,
+  SETTLED,
+}
