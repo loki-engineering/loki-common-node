@@ -106,22 +106,7 @@ export enum EmailTemplateType {
   PASSWORD_CONFIRMATION = 'password_confirmation',
 }
 
-export enum OrderStatus {
-  AWAITING_PAYMENT = 'awaiting_payment',
-  ORDERED = 'ordered',
-  OUTBOUND = 'outbound',
-  DELIVERED = 'delivered',
-  INBOUND = 'inbound',
-  QC_CHECKING = 'qc_checking',
-  QC_PASSED = 'qc_passed',
-  CANCELLED = 'cancelled',
-  LOST = 'lost',
-  DAMAGE_DETECTED = 'damage_detected',
-  LOST_OUTBOUND = 'lost_outbound',
-  LOST_INBOUND = 'lost_inbound',
-  COMPLETED = 'completed',
-}
-
+// @Deprecated
 export enum OrderItemStatus {
   ACTIVE = 'active', //
   EXTENDED = 'extended', // item rental has been extended

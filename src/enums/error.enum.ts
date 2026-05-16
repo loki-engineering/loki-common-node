@@ -24,6 +24,8 @@ export enum ErrorEntity {
   WalletTransaction = 'wallet_transaction',
   UpcomingRelease = 'upcoming_release',
   PhoneVerification = 'phone_verification',
+  OrderItem = 'order_item',
+  ItemProof = 'item_proof',
 }
 
 export enum ServerErrorEnum {
