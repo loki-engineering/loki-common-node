@@ -44,6 +44,10 @@ export enum OrderStatus {
   OVERDUE = 'overdue',
   DISPUTED = 'disputed',
   CLOSED = 'closed',
+  // backward compatibility
+  PENDING = 'pending', // starting state (was awaiting_payment)
+  COMPLETED = 'completed', // normal end state (no disputes)
+  CANCELLED = 'cancelled', // terminal cancel state
 }
 
 export enum AppealStatus {
