@@ -55,3 +55,9 @@ export enum AppealStatus {
   REJECTED = 'appeal_rejected',
   ACCEPTED = 'appeal_accepted',
 }
+
+export enum OrderType {
+  NEW = 'new',
+  EXTEND = 'extend',
+  REPLACEMENT = 'replacement',
+}

@@ -90,11 +90,6 @@ export enum GamePlayMode {
   CO_OP = 'co_op',
 }
 
-export enum OrderType {
-  NEW = 'new',
-  EXTEND = 'extend',
-}
-
 export enum VerificationTokenType {
   EMAIL_VERIFICATION = 'email_verification',
   PASSWORD_RESET = 'password_reset',
