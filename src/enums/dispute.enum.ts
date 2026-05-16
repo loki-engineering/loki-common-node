@@ -4,7 +4,7 @@ export enum ItemProofType {
 }
 
 export enum ItemProofStatus {
-  PENDING = 'PENDING',
-  REJECTED = 'REJECTED',
-  ACCEPTED = 'ACCEPTED',
+  PENDING = 'pending',
+  REJECTED = 'rejected',
+  ACCEPTED = 'accepted',
 }
