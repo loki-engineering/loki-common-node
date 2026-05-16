@@ -23,6 +23,7 @@ export enum ErrorEntity {
   Wallet = 'wallet',
   WalletTransaction = 'wallet_transaction',
   UpcomingRelease = 'upcoming_release',
+  PhoneVerification = 'phone_verification',
 }
 
 export enum ServerErrorEnum {
