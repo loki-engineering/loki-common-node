@@ -6,3 +6,4 @@ export * from './error.enum';
 export * from './bank.enum';
 export * from './otp.enum';
 export * from './order.enum';
+export * from './dispute.enum';
